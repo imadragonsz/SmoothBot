@@ -23,11 +23,11 @@ module.exports = {
       interaction.reply(`channel: ${streamerchoice} doesn't exist`);
       return;
     }
-    let viewercount = await axios({
+    const viewercount = await axios({
       url: `https://api.crunchprank.net/twitch/viewercount/${streamerchoice}`,
       method: "GET",
     });
-    let Game = await axios({
+    const Game = await axios({
       url: `https://api.crunchprank.net/twitch/game/${streamerchoice}`,
       method: "GET",
     });
