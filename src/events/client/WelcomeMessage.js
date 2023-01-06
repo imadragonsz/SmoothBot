@@ -15,7 +15,6 @@ const {
       .setDescription(welcomeMessage)
       .setColor(0x11111)
       welcomeChannel.send({embeds: [embed]})
-        //welcomeChannel.send({content: `Welcome <@${member.id}> to Psycho Powa, please read the <#${rules}> and enjoy your stay`})
     
     }
   
