@@ -3,7 +3,9 @@ require("dotenv").config();
 const { token } = process.env;
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const fs = require("fs");
-const client = new Client({ intents: GatewayIntentBits.Guilds });
+const client = new Client({
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
+});
 const axios = require("axios");
 
 //registring commands
