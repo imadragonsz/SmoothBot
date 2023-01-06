@@ -28,4 +28,5 @@ client.handleEvents();
 client.handleCommands();
 client.handleComponents();
 //logging in with the bot
+
 client.login(token);

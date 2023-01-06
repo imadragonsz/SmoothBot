@@ -6,7 +6,6 @@ module.exports = {
   once: true,
   async execute(client) {
     console.log("The client is now ready!");
-
     if (!Database) return;
     mongoose
       .set('strictQuery', true)
