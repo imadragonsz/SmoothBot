@@ -6,7 +6,6 @@ const fs = require("fs");
 const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
 });
-const axios = require("axios");
 
 //registring commands
 client.commands = new Collection();
