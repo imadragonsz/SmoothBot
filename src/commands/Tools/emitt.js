@@ -11,6 +11,7 @@ module.exports = {
         .setDescription("the event you want to emitt")
         .setRequired(true)
         .addChoices({ name: "guildMemberAdd", value: "guildMemberAdd" })
+        .addChoices({ name: "guildMemberRemove", value: "guildMemberRemove" })
     ),
   async execute(interaction, client) {
     const Event = interaction.options.getString("event");
