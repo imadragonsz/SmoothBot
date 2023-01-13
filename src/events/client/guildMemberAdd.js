@@ -1,9 +1,13 @@
-const { GuildMember, EmbedBuilder } = require("discord.js");
+const {
+  GuildMember,
+  EmbedBuilder,
+  InteractionCollector,
+} = require("discord.js");
 
 module.exports = {
   name: "guildMemberAdd",
 
-  async execute(member, client) {
+  async execute(member, client, interaction) {
     if (member.guild.channels.cache.get("495395599068168193")) {
       try {
         console.log("user joined");
