@@ -32,42 +32,23 @@ module.exports = (client) => {
       clientid,
     } = process.env;
 
-    // const serverids = [
-    //   trollfaceid,
-    //   serverstatstestguildid,
-    //   testserverguildid,
-    //   zkguildid,
-    //   clientid,
-    // ];
+    const serverids = [
+      trollfaceid,
+      serverstatstestguildid,
+      testserverguildid,
+      zkguildid,
+    ];
 
     const rest = new REST({ version: "9" }).setToken(process.env.token);
     try {
       console.log("Started refreshing application (/ commands.)");
 
-      // for (const server of serverids) {
-      //   await rest.put(Routes.applicationGuildCommands(clientid, server), {
-      //     body: client.commandArray,
-      //   });
-      // }
-      await rest.put(Routes.applicationGuildCommands(clientid, trollfaceid), {
-        body: client.commandArray,
-      });
-      await rest.put(Routes.applicationGuildCommands(clientid, zkguildid), {
-        body: client.commandArray,
-      });
-      await rest.put(
-        Routes.applicationGuildCommands(clientid, testserverguildid),
-        {
+      for (const server of serverids) {
+        console.log(server);
+        await rest.put(Routes.applicationGuildCommands(clientid, server), {
           body: client.commandArray,
-        }
-      );
-      await rest.put(
-        Routes.applicationGuildCommands(clientid, serverstatstestguildid),
-        {
-          body: client.commandArray,
-        }
-      );
-
+        });
+      }
       console.log("successfully reloaded application (/) commands");
     } catch (error) {
       console.error(error);
