@@ -27,10 +27,15 @@ module.exports = (client) => {
     const MainGuildId = "168064012175540224";
     const guildId = "857729547985879081";
     const serverstattestid = "527147837151248394";
+    const trollfaceId = "954762624132866138";
+
     const rest = new REST({ version: "9" }).setToken(process.env.token);
     try {
       console.log("Started refreshing application (/ commands.)");
 
+      await rest.put(Routes.applicationGuildCommands(clientId, trollfaceId), {
+        body: client.commandArray,
+      });
       await rest.put(Routes.applicationGuildCommands(clientId, MainGuildId), {
         body: client.commandArray,
       });
