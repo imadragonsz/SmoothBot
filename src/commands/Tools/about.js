@@ -1,11 +1,14 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
-const axios = require("axios");
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("about")
     .setDescription("About Emperor_ZK"),
-  async execute(interaction) {
+  async execute(interaction, member, client) {
+    if (interaction.guild.id != "168064012175540224") {
+      return interaction.reply("this command is not used in this server");
+    }
+    const { guild } = member;
     const embed = new EmbedBuilder()
       .setTitle("About EmperorZK")
       .setThumbnail(
@@ -28,7 +31,6 @@ module.exports = {
             "The HYPECASTER & ENTERTAINER of the UNIVERSE! -Follow me for AWESOME times! (You'll often find me Casting awesome competitive games ranging from FPS to Fighting Games!) + Community Party Games on Sunday includes Jackbox, Among Us, Fall Guys and more!",
         },
       ]);
-
     interaction.reply({
       embeds: [embed],
     });

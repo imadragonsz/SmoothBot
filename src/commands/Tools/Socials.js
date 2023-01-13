@@ -10,6 +10,9 @@ module.exports = {
     .setName("socials")
     .setDescription("shows a menu of zk's social media platforms"),
   async execute(interaction, client) {
+    if (interaction.guild.id != "168064012175540224") {
+      return interaction.reply("this command is not used in this server");
+    }
     const menu = new StringSelectMenuBuilder()
       .setCustomId("socials")
       .setMinValues(1)

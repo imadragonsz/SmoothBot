@@ -10,6 +10,9 @@ module.exports = {
     .setName("other-links")
     .setDescription(`shows a menu of other "maybe" useful links`),
   async execute(interaction) {
+    if (interaction.guild.id != "168064012175540224") {
+      return interaction.reply("this command is not used in this server");
+    }
     const menu = new StringSelectMenuBuilder()
       .setCustomId("otherlinks")
       .setMinValues(1)
