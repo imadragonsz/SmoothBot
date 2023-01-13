@@ -14,15 +14,12 @@ module.exports = {
         .setRequired(true)
     ),
   async execute(interaction) {
+    const start = new Date();
     const streamerchoice = interaction.options.getString("streamer");
     const followcount = await axios({
       url: `https://api.crunchprank.net/twitch/followcount/${streamerchoice}`,
       method: "GET",
     });
-    if (followcount.data == `User not found: ${streamerchoice}`) {
-      interaction.reply(`channel: ${streamerchoice} doesn't exist`);
-      return;
-    }
     const viewercount = await axios({
       url: `https://api.crunchprank.net/twitch/viewercount/${streamerchoice}`,
       method: "GET",
@@ -31,10 +28,6 @@ module.exports = {
       url: `https://api.crunchprank.net/twitch/game/${streamerchoice}`,
       method: "GET",
     });
-    if (viewercount.data == `${streamerchoice} is offline`) {
-      viewercount.data = 0;
-      Game.data = "streamer is offline and thus is not playing anything";
-    }
     const avatar = await axios({
       url: `https://api.crunchprank.net/twitch/avatar/${streamerchoice}`,
       method: "GET",
@@ -44,11 +37,22 @@ module.exports = {
       method: "GET",
     });
     let Status = `${streamerchoice} is currently streaming :red_circle:`;
+    if (followcount.data == `User not found: ${streamerchoice}`) {
+      interaction.reply(`channel: ${streamerchoice} doesn't exist`);
+      return;
+    }
+    if (viewercount.data == `${streamerchoice} is offline`) {
+      viewercount.data = 0;
+      Game.data = "streamer is offline and thus is not playing anything";
+    }
     if (viewercount.data == 0) {
       Status = `${streamerchoice} is currently offline`;
     }
+    const end = new Date();
+    const diff = end.getTime() - start.getTime();
+    console.log(`${diff}ms`);
     const embed = new EmbedBuilder()
-      .setTitle(`Twitchstats of ${streamerchoice}`)
+      .setTitle(`Twitchstats of ${streamerchoice} (took ${diff}ms)`)
       .setThumbnail(avatar.data)
       .addFields([
         {
@@ -82,7 +86,7 @@ module.exports = {
       ]);
     interaction.reply({
       embeds: [embed],
-      ephemeral: true,
+      ephemeral: false,
     });
   },
 };
