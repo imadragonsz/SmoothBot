@@ -39,6 +39,22 @@ module.exports = {
       } catch (error) {
         console.error(error);
       }
+    }
+    if (member.guild.channels.cache.get("980861088990130236")) {
+      try {
+        console.log("user joined");
+        const { user, guild } = member;
+        const WelcomeChannel =
+          member.guild.channels.cache.get("980861088990130236");
+        const rules = "954765415639306281";
+        const welcomeMessage = `Welcome <@${member.id}> to Trollface \b\n Please read the <#${rules}> and enjoy your stay`;
+        const embed = new EmbedBuilder()
+          .setDescription(welcomeMessage)
+          .setColor(0x11111);
+        WelcomeChannel.send({ embeds: [embed] });
+      } catch (error) {
+        console.error(error);
+      }
     } else {
       return;
     }
