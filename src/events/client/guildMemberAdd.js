@@ -4,10 +4,7 @@ module.exports = {
   name: "guildMemberAdd",
 
   async execute(member, client) {
-    if (
-      member.guild.channels.cache.get("495395599068168193") ==
-      "495395599068168193"
-    ) {
+    if (member.guild.channels.cache.get("495395599068168193")) {
       try {
         console.log("user joined");
         const { user, guild } = member;
@@ -23,10 +20,7 @@ module.exports = {
         console.error(error);
       }
     }
-    if (
-      member.guild.channels.cache.get("942237225167491122") ==
-      "942237225167491122"
-    ) {
+    if (member.guild.channels.cache.get("942237225167491122")) {
       try {
         console.log("user joined");
         const { user, guild } = member;
