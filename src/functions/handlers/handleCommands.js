@@ -3,6 +3,7 @@ const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 const Ascii = require("ascii-table");
 const table = new Ascii("commands Loaded");
+require("dotenv").config();
 
 module.exports = (client) => {
   client.handleCommands = async () => {
@@ -23,27 +24,45 @@ module.exports = (client) => {
 
     console.log(table.toString());
 
-    const clientId = "1058377280520454225";
-    const MainGuildId = "168064012175540224";
-    const guildId = "857729547985879081";
-    const serverstattestid = "527147837151248394";
-    const trollfaceId = "954762624132866138";
+    const {
+      trollfaceid,
+      serverstatstestguildid,
+      testserverguildid,
+      zkguildid,
+      clientid,
+    } = process.env;
+
+    // const serverids = [
+    //   trollfaceid,
+    //   serverstatstestguildid,
+    //   testserverguildid,
+    //   zkguildid,
+    //   clientid,
+    // ];
 
     const rest = new REST({ version: "9" }).setToken(process.env.token);
     try {
       console.log("Started refreshing application (/ commands.)");
 
-      await rest.put(Routes.applicationGuildCommands(clientId, trollfaceId), {
+      // for (const server of serverids) {
+      //   await rest.put(Routes.applicationGuildCommands(clientid, server), {
+      //     body: client.commandArray,
+      //   });
+      // }
+      await rest.put(Routes.applicationGuildCommands(clientid, trollfaceid), {
         body: client.commandArray,
       });
-      await rest.put(Routes.applicationGuildCommands(clientId, MainGuildId), {
-        body: client.commandArray,
-      });
-      await rest.put(Routes.applicationGuildCommands(clientId, guildId), {
+      await rest.put(Routes.applicationGuildCommands(clientid, zkguildid), {
         body: client.commandArray,
       });
       await rest.put(
-        Routes.applicationGuildCommands(clientId, serverstattestid),
+        Routes.applicationGuildCommands(clientid, testserverguildid),
+        {
+          body: client.commandArray,
+        }
+      );
+      await rest.put(
+        Routes.applicationGuildCommands(clientid, serverstatstestguildid),
         {
           body: client.commandArray,
         }
