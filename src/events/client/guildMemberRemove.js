@@ -10,7 +10,6 @@ module.exports = {
   async execute(member, client, interaction) {
     if (member.guild.channels.cache.get("942237225167491122")) {
       try {
-        console.log("user left");
         const { user, guild } = member;
         const WelcomeChannel =
           member.guild.channels.cache.get("942237225167491122");
