@@ -3,59 +3,37 @@ const {
   EmbedBuilder,
   InteractionCollector,
 } = require("discord.js");
+const messageschema = require("../../components/models/welcomemessage");
 
 module.exports = {
   name: "guildMemberAdd",
 
   async execute(member, client, interaction) {
-    if (member.guild.channels.cache.get("495395599068168193")) {
+    const GuildID = member.guild.id;
+    messageschema.findOne({ guildid: GuildID }, async (err, data) => {
+      if (!data) return;
+
       try {
         const { user, guild } = member;
-        const welcomeChannel =
-          member.guild.channels.cache.get("495395599068168193");
-        const rules = "761419156264058890";
-        const welcomeMessage = `Welcome <@${member.id}> to Psycho Powa \b\n Please read the <#${rules}> and enjoy your stay`;
+        const Channelid = data.channelid;
+        const Rulesid = member.guild.channels.cache
+          .get(data.rulesid)
+          .toString();
+        const Welcomemessage = data.message;
+        const Member = `<@${member.id}>`;
+        const welcomeChannel = member.guild.channels.cache.get(Channelid);
         const embed = new EmbedBuilder()
-          .setDescription(welcomeMessage)
-          .setColor(0x11111);
+          .setTitle("**New member!**")
+          .setThumbnail(member.displayAvatarURL())
+          .setDescription(`${Member}, ${Welcomemessage} ${Rulesid}`)
+          .setColor(0x11111)
+          .addFields([
+            { name: "Total Members", value: `${guild.memberCount}` },
+          ]);
         welcomeChannel.send({ embeds: [embed] });
       } catch (error) {
         console.error(error);
       }
-    }
-    if (member.guild.channels.cache.get("942237225167491122")) {
-      try {
-        console.log("user joined");
-        const { user, guild } = member;
-        const WelcomeChannel =
-          member.guild.channels.cache.get("942237225167491122");
-        const rules = "895789546497777674";
-        const welcomeMessage = `Welcome <@${member.id}> to the server \b\n Please read the <#${rules}> and enjoy your stay`;
-        const embed = new EmbedBuilder()
-          .setDescription(welcomeMessage)
-          .setColor(0x11111);
-        WelcomeChannel.send({ embeds: [embed] });
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    if (member.guild.channels.cache.get("980861088990130236")) {
-      try {
-        console.log("user joined");
-        const { user, guild } = member;
-        const WelcomeChannel =
-          member.guild.channels.cache.get("980861088990130236");
-        const rules = "954765415639306281";
-        const welcomeMessage = `Welcome <@${member.id}> to Trollface \b\n Please read the <#${rules}> and enjoy your stay`;
-        const embed = new EmbedBuilder()
-          .setDescription(welcomeMessage)
-          .setColor(0x11111);
-        WelcomeChannel.send({ embeds: [embed] });
-      } catch (error) {
-        console.error(error);
-      }
-    } else {
-      return;
-    }
+    });
   },
 };
