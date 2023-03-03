@@ -66,19 +66,19 @@ module.exports = {
         .addFields([
           {
             name: "Function",
-            value: `${commandfunction}`,
+            value: `\`\`\`\n${commandfunction}\n\`\`\``,
           },
         ])
         .addFields([
           {
             name: "Usage",
-            value: `${usage}`,
+            value: `\`\`\`\n${usage}\n\`\`\``,
           },
         ])
         .addFields([
           {
             name: "Extra information",
-            value: `${extra}`,
+            value: `\`\`\`\n${extra}\n\`\`\``,
           },
         ]);
     }
@@ -88,13 +88,13 @@ module.exports = {
         .addFields([
           {
             name: "function",
-            value: `${commandfunction}`,
+            value: `\`\`\`\n${commandfunction}\n\`\`\``,
           },
         ])
         .addFields([
           {
             name: "usage",
-            value: `${usage}`,
+            value: `\`\`\`\n${usage}\n\`\`\``,
           },
         ]);
     }

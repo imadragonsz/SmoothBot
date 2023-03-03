@@ -36,7 +36,7 @@ module.exports = {
       url: `https://api.crunchprank.net/twitch/accountage/${streamerchoice}`,
       method: "GET",
     });
-    let Status = `${streamerchoice} is currently streaming :red_circle:`;
+    let Status = `${streamerchoice} is currently streaming 🔴`;
     if (followcount.data == `User not found: ${streamerchoice}`) {
       interaction.reply(`channel: ${streamerchoice} doesn't exist`);
       return;
@@ -50,38 +50,37 @@ module.exports = {
     }
     const end = new Date();
     const diff = end.getTime() - start.getTime();
-    console.log(`${diff}ms`);
     const embed = new EmbedBuilder()
       .setTitle(`Twitchstats of ${streamerchoice} (took ${diff}ms)`)
       .setThumbnail(avatar.data)
       .addFields([
         {
           name: "Current status",
-          value: `${Status}`,
+          value: `\`\`\`\n${Status}\n\`\`\``,
         },
       ])
       .addFields([
         {
           name: "Playing",
-          value: `${Game.data}`,
+          value: `\`\`\`\n${Game.data}\n\`\`\``,
         },
       ])
       .addFields([
         {
           name: "Followercount",
-          value: `This streamer currently has ${followcount.data} followers`,
+          value: `\`\`\`\nThis streamer currently has ${followcount.data} followers\n\`\`\``,
         },
       ])
       .addFields([
         {
           name: "Viewercount",
-          value: `This streamer currently has ${viewercount.data} viewers`,
+          value: `\`\`\`\nThis streamer currently has ${viewercount.data} viewers\n\`\`\``,
         },
       ])
       .addFields([
         {
           name: "Account age",
-          value: `This account is ${accountage.data} old`,
+          value: `\`\`\`\nThis account is ${accountage.data} old\n\`\`\``,
         },
       ]);
     interaction.reply({

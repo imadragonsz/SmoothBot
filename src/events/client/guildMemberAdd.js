@@ -33,7 +33,10 @@ module.exports = {
           .setDescription(`${Welcomemessagereplaced}`)
           .setColor(0x11111)
           .addFields([
-            { name: "Total Members", value: `${guild.memberCount}` },
+            {
+              name: "Total Members",
+              value: `\`\`${guild.memberCount}\n\`\``,
+            },
           ]);
         welcomeChannel.send({ embeds: [embed] });
       } catch (error) {

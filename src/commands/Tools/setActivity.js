@@ -24,6 +24,8 @@ module.exports = {
         },
       ],
     });
-    interaction.reply(`you changed the bots activity to: ${activity}`);
+    interaction.reply(
+      `\`\`\`\nyou changed the bots activity to: ${activity}\n\`\`\``
+    );
   },
 };

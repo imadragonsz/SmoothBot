@@ -17,10 +17,13 @@ module.exports = {
     const Event = interaction.options.getString("event");
     try {
       client.emit(Event, interaction.member);
-      interaction.reply({ content: `you emitted ${Event}`, ephemeral: true });
+      interaction.reply({
+        content: `\`\`\`\nyou emitted ${Event}\n\`\`\``,
+        ephemeral: true,
+      });
     } catch (error) {
       console.error(error);
-      interaction.reply(`${Event} doesn't exist`);
+      interaction.reply(`\`\`\`\n${Event} doesn't exist\n\`\`\``);
     }
   },
 };

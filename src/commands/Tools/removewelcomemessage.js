@@ -14,6 +14,6 @@ module.exports = {
         return;
       };
     });
-    interaction.reply("your welcome message was removed");
+    interaction.reply("```your welcome message was removed```");
   },
 };

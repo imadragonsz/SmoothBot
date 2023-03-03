@@ -61,7 +61,7 @@ module.exports = {
     const embed = new EmbedBuilder().setTitle("Welcome Message").addFields([
       {
         name: "Your welcome message",
-        value: `${WelcomeMessage}`,
+        value: `\`\`\`\n${WelcomeMessage}\n\`\`\``,
       },
     ]);
 

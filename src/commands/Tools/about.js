@@ -8,7 +8,7 @@ module.exports = {
   async execute(interaction, member, client) {
     const { zkguildid } = process.env;
     if (interaction.guild.id != zkguildid) {
-      return interaction.reply("this command is not used in this server");
+      return interaction.reply("```this command is not used in this server```");
     }
     const { guild } = member;
     const embed = new EmbedBuilder()
@@ -20,17 +20,17 @@ module.exports = {
       .addFields([
         {
           name: "Name",
-          value: `EmperorZK aka Richard`,
+          value: `\`\`\`\nEmperorZK aka Richard\n\`\`\``,
         },
         {
           name: "Occupation",
           value:
-            "CEO of Always Positive (A+) Media ANZ, Head of Beat FGC ANZ, Classical Musician, 1st Degree Black belt, Entertainer, Stage host, Esports Commentator, Operations Manager, Cinematographer, Photographer and Editor",
+            "```CEO of Always Positive (A+) Media ANZ, Head of Beat FGC ANZ, Classical Musician, 1st Degree Black belt, Entertainer, Stage host, Esports Commentator, Operations Manager, Cinematographer, Photographer and Editor```",
         },
         {
           name: "Character description",
           value:
-            "The HYPECASTER & ENTERTAINER of the UNIVERSE! -Follow me for AWESOME times! (You'll often find me Casting awesome competitive games ranging from FPS to Fighting Games!) + Community Party Games on Sunday includes Jackbox, Among Us, Fall Guys and more!",
+            "```The HYPECASTER & ENTERTAINER of the UNIVERSE! -Follow me for AWESOME times! (You'll often find me Casting awesome competitive games ranging from FPS to Fighting Games!) + Community Party Games on Sunday includes Jackbox, Among Us, Fall Guys and more!```",
         },
       ]);
     interaction.reply({

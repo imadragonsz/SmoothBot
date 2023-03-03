@@ -45,9 +45,9 @@ module.exports = {
         sum = +number1 * +number2;
         break;
     }
-    const embed = new EmbedBuilder()
-      .setTitle("Sum")
-      .addFields([{ name: "the sum", value: `the sum is ${sum}` }]);
+    const embed = new EmbedBuilder().addFields([
+      { name: "The sum is:", value: `\`\`\`\n${sum}\`\`\`` },
+    ]);
     interaction.reply({
       embeds: [embed],
     });
