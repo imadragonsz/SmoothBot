@@ -4,13 +4,15 @@ const {
   ActionRowBuilder,
   StringSelectMenuOptionBuilder,
 } = require("discord.js");
+require("dotenv").config();
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("socials")
     .setDescription("shows a menu of zk's social media platforms"),
   async execute(interaction, client) {
-    if (interaction.guild.id != "168064012175540224") {
+    const { zkguildid } = process.env;
+    if (interaction.guild.id != zkguildid) {
       return interaction.reply("this command is not used in this server");
     }
     const menu = new StringSelectMenuBuilder()
