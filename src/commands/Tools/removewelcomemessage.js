@@ -1,11 +1,5 @@
-const {
-  SlashCommandBuilder,
-  PermissionFlagsBits,
-  EmbedBuilder,
-} = require("discord.js");
-const mongoose = require("mongoose");
+const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
 const welcomemessage = require("../../components/models/welcomemessage");
-const messageschema = require("../../components/models/welcomemessage");
 
 module.exports = {
   data: new SlashCommandBuilder()

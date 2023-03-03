@@ -3,7 +3,6 @@ const {
   PermissionFlagsBits,
   EmbedBuilder,
 } = require("discord.js");
-const mongoose = require("mongoose");
 const welcomemessage = require("../../components/models/welcomemessage");
 const messageschema = require("../../components/models/welcomemessage");
 
