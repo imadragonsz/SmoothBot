@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
 } = require("discord.js");
+const removewelcomemessage = require("./removewelcomemessage");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -15,6 +16,10 @@ module.exports = {
         .setDescription("select the command you want more information on")
         .setRequired(true)
         .addChoices({ name: "addwelcomemessage", value: "addwelcomemessage" })
+        .addChoices({
+          name: "removewelcomemessage",
+          value: "removewelcomemessage",
+        })
         .addChoices({ name: "setactivity", value: "setactivity" })
         .addChoices({ name: "emitt", value: "emitt" })
     ),
@@ -34,6 +39,13 @@ module.exports = {
           "Specify the id of the welcome channel, the id of the rules channel and the welcome message you want";
         extra =
           "You can use some specific texts to spice up your welcome message:\n{memberid}, Tags the user that joined the server\n{rulesid}, Tags the rules channel\n{newline}, Everything after this will be put on a new line";
+        break;
+      case "removewelcomemessage":
+        title = "Removewelcomemessage help";
+        commandfunction =
+          "This command removes the welcomemessage you added and because of this no one will get greeted by this bot anymore";
+        usage =
+          "Just run the command in the server that you want to remove the welcomemessage";
         break;
       case "setactivity":
         title = "Setactivity help";
@@ -91,8 +103,7 @@ module.exports = {
         embeds: [embed],
       });
     } catch (error) {
-      console.log(error);
+      return;
     }
-    console.log(extra);
   },
 };
