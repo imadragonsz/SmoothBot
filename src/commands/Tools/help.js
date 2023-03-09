@@ -15,7 +15,7 @@ module.exports = {
         .addChoices({ name: "socials", value: "socials" })
         .addChoices({ name: "twitchstats", value: "twitchstats" })
     ),
-  async execute(interaction, client) {
+  async execute(interaction) {
     const Command = interaction.options.getString("command");
     let title;
     let commandfunction;

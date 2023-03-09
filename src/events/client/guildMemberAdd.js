@@ -8,7 +8,7 @@ const messageschema = require("../../components/models/welcomemessage");
 module.exports = {
   name: "guildMemberAdd",
 
-  async execute(member, client, interaction) {
+  async execute(member) {
     const GuildID = member.guild.id;
     messageschema.findOne({ guildid: GuildID }, async (err, data) => {
       const { user, guild } = member;
