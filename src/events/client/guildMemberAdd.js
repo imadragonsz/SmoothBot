@@ -1,8 +1,4 @@
-const {
-  GuildMember,
-  EmbedBuilder,
-  InteractionCollector,
-} = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 const messageschema = require("../../components/models/welcomemessage");
 
 module.exports = {
@@ -11,7 +7,7 @@ module.exports = {
   async execute(member) {
     const GuildID = member.guild.id;
     messageschema.findOne({ guildid: GuildID }, async (err, data) => {
-      const { user, guild } = member;
+      const { guild } = member;
       const Channelid = data.channelid;
       const Rulesid = member.guild.channels.cache.get(data.rulesid).toString();
       const Welcomemessage = data.message;
