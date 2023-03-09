@@ -7,7 +7,7 @@ module.exports = {
     .setDescription("removes welcomemessage")
     .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 
-  async execute(interaction, client) {
+  async execute(interaction) {
     const GuildID = interaction.guild.id;
     welcomemessage.deleteMany({ guildid: GuildID }, (err) => {
       (err) => {
