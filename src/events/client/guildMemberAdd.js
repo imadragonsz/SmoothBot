@@ -1,5 +1,7 @@
 const { EmbedBuilder } = require("discord.js");
 const messageschema = require("../../components/models/welcomemessage");
+require("dotenv").config();
+const { zkguildid } = process.env;
 
 module.exports = {
   name: "guildMemberAdd",
@@ -20,23 +22,44 @@ module.exports = {
         }
       );
 
-      const welcomeChannel = member.guild.channels.cache.get(Channelid);
-      if (!data) return;
-      try {
-        const embed = new EmbedBuilder()
-          .setTitle("**New member!**")
-          .setThumbnail(member.displayAvatarURL())
-          .setDescription(`${Welcomemessagereplaced}`)
-          .setColor(0x11111)
-          .addFields([
-            {
-              name: "Total Members",
-              value: `\`\`${guild.memberCount}\n\`\``,
-            },
-          ]);
-        welcomeChannel.send({ embeds: [embed] });
-      } catch (error) {
-        console.error(error);
+      if (GuildID === zkguildid) {
+        const welcomeChannel = member.guild.channels.cache.get(Channelid);
+        if (!data) return;
+        try {
+          const embed = new EmbedBuilder()
+            .setTitle("**New member!**")
+            .setThumbnail(member.displayAvatarURL())
+            .setDescription(`${Welcomemessagereplaced}`)
+            .setColor(0x11111)
+            .addFields([
+              {
+                name: "Total Members",
+                value: `\`\`${guild.memberCount}\n\`\``,
+              },
+            ]);
+          welcomeChannel.send({ embeds: [embed] });
+        } catch (error) {
+          console.error(error);
+        }
+      } else {
+        const welcomeChannel = member.guild.channels.cache.get(Channelid);
+        if (!data) return;
+        try {
+          const embed = new EmbedBuilder()
+            .setTitle("**New member!**")
+            .setThumbnail(member.displayAvatarURL())
+            .setDescription(`${Welcomemessagereplaced}`)
+            .setColor(0x11111)
+            .addFields([
+              {
+                name: "Total Members",
+                value: `\`\`${guild.memberCount}\n\`\``,
+              },
+            ]);
+          welcomeChannel.send({ embeds: [embed] });
+        } catch (error) {
+          console.error(error);
+        }
       }
     });
   },
