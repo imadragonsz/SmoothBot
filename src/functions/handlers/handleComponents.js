@@ -13,13 +13,13 @@ module.exports = (client) => {
         (file) => file.endsWith(".js")
       );
 
-      const { buttons, SelectMenus, modals } = client;
+      const { Buttons, SelectMenus, modals } = client;
 
       switch (folder) {
-        case "buttons":
+        case "Buttons":
           for (const file of componentFiles) {
             const button = require(`../../components/${folder}/${file}`);
-            buttons.set(button.data.name, button);
+            Buttons.set(button.data.name, button);
             await buttontable.addRow(button.data.name, "✔ SUCCESFUL");
           }
           break;

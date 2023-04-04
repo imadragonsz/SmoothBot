@@ -32,9 +32,9 @@ module.exports = {
 
       command.execute(interaction, client);
     } else if (interaction.isButton()) {
-      const { buttons } = client;
+      const { Buttons } = client;
       const { customId } = interaction;
-      const button = buttons.get(customId);
+      const button = Buttons.get(customId);
       if (!button) return new Error("there is no code for this button");
 
       try {
